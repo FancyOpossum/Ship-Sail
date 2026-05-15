@@ -58,7 +58,8 @@ public class FirstPersonController : MonoBehaviour
         bool sprinting = sprintAction != null && sprintAction.action.IsPressed();
         float currentSpeed = sprinting ? sprintSpeed : walkSpeed;
 
-        Vector3 horizontal = (transform.right * moveInput.x + transform.forward * moveInput.y) * currentSpeed;
+        Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
+        Vector3 horizontal = move * currentSpeed;
 
         verticalVelocity += gravity * Time.deltaTime;
 

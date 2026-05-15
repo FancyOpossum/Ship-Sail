@@ -27,7 +27,8 @@ public class PlayerLook : MonoBehaviour
         float yaw = lookInput.x * lookSensitivity;
         float pitchDelta = lookInput.y * lookSensitivity;
 
-        transform.Rotate(0f, yaw, 0f);
+        Vector3 bodyEuler = transform.eulerAngles;
+        transform.rotation = Quaternion.Euler(0f, bodyEuler.y + yaw, 0f);
 
         pitch = Mathf.Clamp(pitch - pitchDelta, -maxVerticalAngle, maxVerticalAngle);
         if (cameraTransform != null)
