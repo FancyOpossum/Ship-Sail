@@ -1,3 +1,4 @@
+// Assets/Scripts/Player/FirstPersonController.cs
 using UnityEngine;
 using UnityEngine.InputSystem;
 
