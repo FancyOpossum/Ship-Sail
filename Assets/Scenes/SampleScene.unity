@@ -266,14 +266,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd8f9e6c2c98fa8448830075dd8de4fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 205ce74251e7248488f4dca49dc3cbe8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShipSail.Player.PlayerLook
-  playerBody: {fileID: 485150360}
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerLook
+  cameraTransform: {fileID: 485150360}
   lookAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  lookSensitivity: 20
-  minPitch: -80
-  maxPitch: 80
+  lookSensitivity: 0.5
+  maxVerticalAngle: 80
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,10 +410,10 @@ GameObject:
   m_Component:
   - component: {fileID: 485150360}
   - component: {fileID: 485150359}
-  - component: {fileID: 485150358}
-  - component: {fileID: 485150357}
-  - component: {fileID: 485150356}
-  - component: {fileID: 485150355}
+  - component: {fileID: 485150364}
+  - component: {fileID: 485150363}
+  - component: {fileID: 485150362}
+  - component: {fileID: 485150361}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -422,81 +421,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &485150355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485150354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9b53f260ac021741b842089494d70ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShipSail.Items.ThrowableItem
-  playerCamera: {fileID: 330585545}
-  previousAction: {fileID: 2411907206095950430, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  nextAction: {fileID: 7476244043514120974, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  throwablePrefab: {fileID: 716476369185612465, guid: f15af826e8226d447b03c5af70af0ae9, type: 3}
-  spawnForwardOffset: 0.6
-  throwForce: 16
---- !u!114 &485150356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485150354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66c422077befd2a4b828cd6c0a4793e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShipSail.Combat.SwordSwing
-  playerCamera: {fileID: 330585545}
-  attackAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  attackRange: 2
-  hitMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &485150357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485150354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e61c3626782708e4eb2d297314ff54b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShipSail.Interaction.Interactor
-  playerCamera: {fileID: 330585545}
-  interactAction: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  interactDistance: 4
-  interactMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  firstPersonController: {fileID: 485150358}
-  playerLook: {fileID: 330585548}
---- !u!114 &485150358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485150354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 786bf191b491e114e8b1a91771434ad5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShipSail.Player.FirstPersonController
-  walkSpeed: 4
-  sprintSpeed: 7
-  jumpHeight: 1.2
-  gravity: -20
-  moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  jumpAction: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  sprintAction: {fileID: -7471211009204490832, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!143 &485150359
 CharacterController:
   m_ObjectHideFlags: 0
@@ -538,6 +462,66 @@ Transform:
   - {fileID: 330585546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &485150361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485150354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e739029ba35047944b381ffbc28a7a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThrowableItem
+  itemRigidbody: {fileID: 0}
+  throwForce: 8
+--- !u!114 &485150362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485150354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801054367ca83a849aff4f1f7927c434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwordSwing
+  swingCooldown: 0.5
+--- !u!114 &485150363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485150354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44fb08649f69fe74f87cf7f2b897bee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactor
+  interactRange: 2
+--- !u!114 &485150364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485150354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 882da393b38b67041ba23f3d79ef583f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FirstPersonController
+  walkSpeed: 4
+  sprintSpeed: 6
+  jumpHeight: 1.2
+  gravity: -15
+  groundedVerticalReset: -2
+  moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  jumpAction: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  sprintAction: {fileID: -7471211009204490832, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &648432797
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,7 +694,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1105873062}
   - component: {fileID: 1105873064}
-  - component: {fileID: 1105873063}
+  - component: {fileID: 1105873066}
+  - component: {fileID: 1105873065}
   m_Layer: 0
   m_Name: Helm
   m_TagString: Untagged
@@ -733,21 +718,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1651915895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1105873063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1105873061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18ec5fca26764ea4780b3a5364ddfedb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShipSail.Ship.ShipHelm
-  shipController: {fileID: 0}
-  interactAction: {fileID: 0}
-  cancelHelmAction: {fileID: 0}
 --- !u!65 &1105873064
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -769,6 +739,91 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1105873065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105873061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a90498eb8b43134fa595a70a9541bc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShipHelm
+  throttle: 0
+  steering: 0
+--- !u!114 &1105873066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105873061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcdaee5b4d8ac7c4b94ea7cdf47474aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShipController
+  forwardSpeed: 4
+  turnSpeed: 30
+--- !u!1001 &1340093401
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2059560844338809773, guid: f15af826e8226d447b03c5af70af0ae9, type: 3}
+      propertyPath: m_Name
+      value: FruitPlaceHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799527151463577410, guid: f15af826e8226d447b03c5af70af0ae9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.45524
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799527151463577410, guid: f15af826e8226d447b03c5af70af0ae9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799527151463577410, guid: f15af826e8226d447b03c5af70af0ae9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.50315
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799527151463577410, guid: f15af826e8226d447b03c5af70af0ae9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799527151463577410, guid: f15af826e8226d447b03c5af70af0ae9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799527151463577410, guid: f15af826e8226d447b03c5af70af0ae9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799527151463577410, guid: f15af826e8226d447b03c5af70af0ae9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799527151463577410, guid: f15af826e8226d447b03c5af70af0ae9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799527151463577410, guid: f15af826e8226d447b03c5af70af0ae9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799527151463577410, guid: f15af826e8226d447b03c5af70af0ae9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f15af826e8226d447b03c5af70af0ae9, type: 3}
 --- !u!1 &1651915889
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,12 +857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcdaee5b4d8ac7c4b94ea7cdf47474aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipSail.Ship.ShipController
-  moveAction: {fileID: 0}
-  accelerationForce: 25
-  turnTorque: 8
-  maxForwardSpeed: 14
-  waterDrag: 1.2
-  angularWaterDrag: 2.5
+  forwardSpeed: 4
+  turnSpeed: 30
 --- !u!54 &1651915891
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -938,3 +989,4 @@ SceneRoots:
   - {fileID: 485150360}
   - {fileID: 648432802}
   - {fileID: 1651915895}
+  - {fileID: 1340093401}
